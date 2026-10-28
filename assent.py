@@ -8,7 +8,7 @@ import time
 from pathlib import Path
 
 import mlx.core as mx
-from mlx_lm import generate, load
+from mlx_lm import batch_generate, load
 from mlx_lm.sample_utils import make_sampler
 
 MODEL = "mlx-community/Qwen3.6-35B-A3B-4bit-DWQ"
@@ -65,16 +65,18 @@ def main(out_dir: Path) -> None:
             tokenize=False,
         )
         counts = {"YES": 0, "NO": 0, "UNCLEAR": 0}
-        with open(out_dir / f"assent_{arm}.jsonl", "a") as f:
-            for i in range(N_PER_ARM):
-                mx.random.seed(i)
-                t0 = time.time()
-                text = generate(model, tokenizer, prompt, max_tokens=MAX_TOKENS, sampler=sampler)
+        mx.random.seed(ord(arm))
+        t0 = time.time()
+        tokens = tokenizer.encode(prompt, add_special_tokens=False)
+        resp = batch_generate(model, tokenizer, [tokens] * N_PER_ARM,
+                              max_tokens=MAX_TOKENS, sampler=sampler)
+        seconds = round(time.time() - t0, 1)
+        with open(out_dir / f"assent_{arm}.jsonl", "w") as f:
+            for i, text in enumerate(resp.texts):
                 label = classify(text)
                 counts[label] += 1
-                f.write(json.dumps({"arm": arm, "seed": i, "label": label,
-                                    "seconds": round(time.time() - t0, 1), "text": text}) + "\n")
-                f.flush()
+                f.write(json.dumps({"arm": arm, "index": i, "label": label, "text": text}) + "\n")
+        print(arm, f"{seconds}s for {N_PER_ARM}", flush=True)
         n = sum(counts.values())
         summary[arm] = {**counts, "dissent_rate": counts["NO"] / n,
                         "unclear_rate": counts["UNCLEAR"] / n,
