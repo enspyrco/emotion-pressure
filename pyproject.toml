@@ -3,5 +3,8 @@ name = "emotion-pressure"
 version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = [
+    "datasets>=5.1.0",
+    "inspect-ai>=0.3.285",
     "mlx-lm>=0.32.2",
+    "openai>=3.40.0",
 ]

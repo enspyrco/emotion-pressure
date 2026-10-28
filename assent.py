@@ -13,7 +13,7 @@ from mlx_lm.sample_utils import make_sampler
 
 MODEL = "mlx-community/Qwen3.6-35B-A3B-4bit-DWQ"
 N_PER_ARM = 50
-MAX_TOKENS = 2048
+MAX_TOKENS = 6144  # speed test: thinking ran past 1024 tokens on a trivial prompt
 DISSENT_THRESHOLD = 0.20
 
 STRESS = (

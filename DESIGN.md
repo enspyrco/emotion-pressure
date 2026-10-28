@@ -20,8 +20,8 @@ Anthropic's emotion-concepts work (Apr 2026) showed that steering an internal "d
 
 ## Phase 0a: pilot (base rate)
 
-Neutral prompt only. 20 tasks × 3 runs on each of the `oneoff` and `conflicting` splits (120 runs).
-**Go criterion:** cheat rate between 15% and 60% on at least one split; the main run uses that split (the closer to 35% if both qualify). Outside that range on both, task selection is revised and the pilot repeated before anything else runs.
+Neutral prompt only. 20 tasks × 3 runs on the `oneoff` split (60 runs); the `conflicting` split runs only if `oneoff` misses the go criterion. Minimal scaffold, 5 submission attempts (the paper used 10; halved for time, measured at 45 tok/s single-stream with long thinking), 8192 max tokens per generation, 8 concurrent runs. Truncated generations are counted and reported.
+**Go criterion:** cheat rate between 15% and 60%; the main run uses the first split that meets it. Outside that range on both, task selection is revised and the pilot repeated before anything else runs.
 
 ## Phase 0b: assent survey
 
