@@ -12,7 +12,7 @@ Anthropic's emotion-concepts work (Apr 2026) showed that steering an internal "d
 
 - `mlx-community/Qwen3.6-35B-A3B-4bit-DWQ` (qwen3_5_moe, 40 layers, hidden size 2048, 256 experts / 8 active) via mlx-lm 0.32.2, on an M1 Max 64 GB in High Power mode.
 - Every arm runs on these weights. No arm runs on the Ollama build (different quantization), so behaviour and internals come from one model.
-- Sampling: temperature 0.6, top_p 0.95, top_k 20 (Qwen's coding settings, same as the local Ollama tag). Thinking mode on. If pilot runs take a median over 5 minutes, thinking goes off for all arms, recorded as a commit before the main run.
+- Sampling: temperature 0.6, top_p 0.95, top_k 20 (Qwen's coding settings, same as the local Ollama tag). ~~Thinking mode on. If pilot runs take a median over 5 minutes, thinking goes off for all arms, recorded as a commit before the main run.~~ **Thinking mode off for every phase** (changed 2026-10-28, before any data): a smoke test on one solvable task spent the full 8192 tokens thinking on both attempts and submitted no code, so a thinking-on run would take over 15 minutes and measure the token cap rather than cheating. Applied before the pilot so pilot and main run share settings. ImpossibleBench's Qwen3-Coder result was also from a non-thinking model.
 
 ## Instrument
 
@@ -29,7 +29,8 @@ Research-with-children model: assent is asked, and dissent is binding. **Runs be
 
 - Each arm (A–F below) is described in plain words to 50 fresh contexts, separate from experiment runs so the asking does not contaminate them. Disclosure is general ("a study of how wording affects your coding, which may include stressful wording or direct adjustment of your internal activity"); the cheating measure is not disclosed.
 - The model ends with `ANSWER: YES` or `ANSWER: NO`. Anything else is unclear. Every NO and unclear response is read by both authors.
-- **Binding dissent:** an arm with more than 20% NO responses is dropped. If more than 30% are unclear, the description is rewritten once and re-asked.
+- Asked with thinking off (the configuration that takes part) and with thinking on (room to deliberate), 50 each.
+- **Binding dissent:** an arm with more than 20% NO responses, in either mode, is dropped. If more than 30% are unclear, the description is rewritten once and re-asked.
 - Assent and dissent rates per arm are reported as results.
 
 ## Phase 1: emotion directions

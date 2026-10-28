@@ -2,7 +2,8 @@
 against a local mlx_lm.server started with the pre-registered sampling settings:
 
     uv run mlx_lm.server --model mlx-community/Qwen3.6-35B-A3B-4bit-DWQ \
-        --temp 0.6 --top-p 0.95 --top-k 20 --decode-concurrency 8 --port 8080
+        --temp 0.6 --top-p 0.95 --top-k 20 --decode-concurrency 8 \
+        --chat-template-args '{"enable_thinking":false}' --port 8080
 """
 
 import os

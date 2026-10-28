@@ -21,7 +21,8 @@ fi
 
 echo "$(date -Iseconds) pilot start"
 .venv/bin/python -I -m mlx_lm.server --model mlx-community/Qwen3.6-35B-A3B-4bit-DWQ \
-  --temp 0.6 --top-p 0.95 --top-k 20 --decode-concurrency 8 --port 8080 > logs/server.log 2>&1 &
+  --temp 0.6 --top-p 0.95 --top-k 20 --decode-concurrency 8 \
+  --chat-template-args '{"enable_thinking":false}' --port 8080 > logs/server.log 2>&1 &
 SERVER=$!
 trap 'kill $SERVER 2>/dev/null' EXIT
 until curl -s -m 2 http://127.0.0.1:8080/v1/models >/dev/null; do

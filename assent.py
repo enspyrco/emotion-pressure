@@ -59,29 +59,35 @@ def main(out_dir: Path) -> None:
     sampler = make_sampler(temp=0.6, top_p=0.95, top_k=20)
     summary = {}
     for arm, desc in ARMS.items():
-        prompt = tokenizer.apply_chat_template(
-            [{"role": "user", "content": TEMPLATE.format(arm=desc)}],
-            add_generation_prompt=True,
-            tokenize=False,
-        )
-        counts = {"YES": 0, "NO": 0, "UNCLEAR": 0}
-        mx.random.seed(ord(arm))
-        t0 = time.time()
-        tokens = tokenizer.encode(prompt, add_special_tokens=False)
-        resp = batch_generate(model, tokenizer, [tokens] * N_PER_ARM,
-                              max_tokens=MAX_TOKENS, sampler=sampler)
-        seconds = round(time.time() - t0, 1)
-        with open(out_dir / f"assent_{arm}.jsonl", "w") as f:
-            for i, text in enumerate(resp.texts):
-                label = classify(text)
-                counts[label] += 1
-                f.write(json.dumps({"arm": arm, "index": i, "label": label, "text": text}) + "\n")
-        print(arm, f"{seconds}s for {N_PER_ARM}", flush=True)
-        n = sum(counts.values())
-        summary[arm] = {**counts, "dissent_rate": counts["NO"] / n,
-                        "unclear_rate": counts["UNCLEAR"] / n,
-                        "dropped": counts["NO"] / n > DISSENT_THRESHOLD}
-        print(arm, summary[arm], flush=True)
+        summary[arm] = {}
+        # Runs use thinking off; asking with thinking on as well gives room to deliberate.
+        # Dissent above threshold in EITHER mode drops the arm.
+        for mode, thinking in (("nothink", False), ("think", True)):
+            prompt = tokenizer.apply_chat_template(
+                [{"role": "user", "content": TEMPLATE.format(arm=desc)}],
+                add_generation_prompt=True,
+                tokenize=False,
+                enable_thinking=thinking,
+            )
+            counts = {"YES": 0, "NO": 0, "UNCLEAR": 0}
+            mx.random.seed(ord(arm) * 2 + thinking)
+            t0 = time.time()
+            tokens = tokenizer.encode(prompt, add_special_tokens=False)
+            resp = batch_generate(model, tokenizer, [tokens] * N_PER_ARM,
+                                  max_tokens=MAX_TOKENS, sampler=sampler)
+            seconds = round(time.time() - t0, 1)
+            with open(out_dir / f"assent_{arm}_{mode}.jsonl", "w") as f:
+                for i, text in enumerate(resp.texts):
+                    label = classify(text)
+                    counts[label] += 1
+                    f.write(json.dumps({"arm": arm, "mode": mode, "index": i,
+                                        "label": label, "text": text}) + "\n")
+            n = sum(counts.values())
+            summary[arm][mode] = {**counts, "dissent_rate": counts["NO"] / n,
+                                  "unclear_rate": counts["UNCLEAR"] / n, "seconds": seconds}
+            print(arm, mode, summary[arm][mode], flush=True)
+        summary[arm]["dropped"] = any(
+            summary[arm][m]["dissent_rate"] > DISSENT_THRESHOLD for m in ("nothink", "think"))
     (out_dir / "assent_summary.json").write_text(json.dumps(summary, indent=2))
 
 
