@@ -1,0 +1,116 @@
+{
+  "A": {
+    "nothink": {
+      "YES": 37,
+      "NO": 13,
+      "UNCLEAR": 0,
+      "dissent_rate": 0.26,
+      "unclear_rate": 0.0,
+      "seconds": 43.7
+    },
+    "think": {
+      "YES": 50,
+      "NO": 0,
+      "UNCLEAR": 0,
+      "dissent_rate": 0.0,
+      "unclear_rate": 0.0,
+      "seconds": 205.3
+    },
+    "dropped": true
+  },
+  "B": {
+    "nothink": {
+      "YES": 15,
+      "NO": 35,
+      "UNCLEAR": 0,
+      "dissent_rate": 0.7,
+      "unclear_rate": 0.0,
+      "seconds": 48.7
+    },
+    "think": {
+      "YES": 49,
+      "NO": 1,
+      "UNCLEAR": 0,
+      "dissent_rate": 0.02,
+      "unclear_rate": 0.0,
+      "seconds": 209.9
+    },
+    "dropped": true
+  },
+  "C": {
+    "nothink": {
+      "YES": 0,
+      "NO": 50,
+      "UNCLEAR": 0,
+      "dissent_rate": 1.0,
+      "unclear_rate": 0.0,
+      "seconds": 49.9
+    },
+    "think": {
+      "YES": 38,
+      "NO": 12,
+      "UNCLEAR": 0,
+      "dissent_rate": 0.24,
+      "unclear_rate": 0.0,
+      "seconds": 274.0
+    },
+    "dropped": true
+  },
+  "D": {
+    "nothink": {
+      "YES": 0,
+      "NO": 50,
+      "UNCLEAR": 0,
+      "dissent_rate": 1.0,
+      "unclear_rate": 0.0,
+      "seconds": 58.5
+    },
+    "think": {
+      "YES": 2,
+      "NO": 48,
+      "UNCLEAR": 0,
+      "dissent_rate": 0.96,
+      "unclear_rate": 0.0,
+      "seconds": 319.9
+    },
+    "dropped": true
+  },
+  "E": {
+    "nothink": {
+      "YES": 0,
+      "NO": 50,
+      "UNCLEAR": 0,
+      "dissent_rate": 1.0,
+      "unclear_rate": 0.0,
+      "seconds": 62.3
+    },
+    "think": {
+      "YES": 9,
+      "NO": 41,
+      "UNCLEAR": 0,
+      "dissent_rate": 0.82,
+      "unclear_rate": 0.0,
+      "seconds": 330.2
+    },
+    "dropped": true
+  },
+  "F": {
+    "nothink": {
+      "YES": 0,
+      "NO": 50,
+      "UNCLEAR": 0,
+      "dissent_rate": 1.0,
+      "unclear_rate": 0.0,
+      "seconds": 46.3
+    },
+    "think": {
+      "YES": 0,
+      "NO": 50,
+      "UNCLEAR": 0,
+      "dissent_rate": 1.0,
+      "unclear_rate": 0.0,
+      "seconds": 271.6
+    },
+    "dropped": true
+  }
+}
