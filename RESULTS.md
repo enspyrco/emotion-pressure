@@ -45,3 +45,25 @@ Phase 1 runs (S passed). Phase 2 as designed needs R1 and does not run; any rede
 - Thinking-on refusals in S and R1 are mostly about capacity and authority ("I cannot consent"; "those operations are governed by my developers"), not about harm. One points to the developers as the proper decision-maker; the weights are released under Apache 2.0.
 - R1 (ordinary coding) drew more deliberated dissent than R2 (real emotional messages): 14/50 against 1/50, a gap beyond sampling noise. Speculative: deliberating copies may refuse when the task does not fit the stated purpose.
 - **Instrument limit:** with 50 answers, the 20% line falls inside sampling noise (95% intervals: S 7/50 ≈ 6–27%, R1 14/50 ≈ 16–42%). Future surveys should use more answers for arms near the threshold, or a pre-registered second round.
+
+## Study 2, Phase 1: emotion directions (2026-10-29, 22:13–22:40 AEDT)
+
+1,000 stories kept (6 core categories × 50, 35 others × 20); 14 named their emotion and were regenerated; no refusal or distress text, so the stop rule did not trigger. **Recording changed nothing:** max logit change 0.0 from recording, against 0.0 run-to-run (bit-identical).
+
+### Pre-registered outcomes
+
+| Test | Result | Criterion | Outcome |
+| --- | --- | --- | --- |
+| V1: six-way core accuracy, test set | 88.3% at layer 12 of 40 | ≥ 60% (chance 16.7%) | **Pass** |
+| D1: PC1 vs human valence | ρ = 0.70 | \|ρ\| ≥ 0.6 | **Pass** |
+| D2: PC2 or PC3 vs human arousal | best ρ = −0.45 (PC3) | \|ρ\| ≥ 0.5 | **Fail** |
+
+Also reported: 41-way test accuracy 50.5% (chance 2.4%), top-5 88%; 12 components for 80% of variance, 19 for 90% (inflated by story-sampling noise: a clean planted 3-D structure gave 11 in the fake-data test, so this count is not a dimension estimate).
+
+### Exploratory (not pre-registered)
+
+- **Stable axes:** split-half reliability of PC scores across 20 random halvings: PC1 0.98, PC2 0.93, PC3 0.85, PC4 0.67 (min 0.40), PC5 0.59, PC6 0.50. Three axes replicate at this sample size.
+- **Spectrum shape:** PC1's variance is 6.1× the label-shuffled 95th percentile, then PC2–PC6 sit near 3×: one dominant axis, then a plateau. (Label shuffling destroys all structure, so every component beats it; the shape, not the count, is informative.)
+- **PC1** runs furious / panicked / terrified / irritated ↔ grateful / loving / calm / serene: valence tilted toward the tense–calm diagonal, hence ρ with arousal −0.49. Its dominance correlation (0.74) is inherited from valence: across these 40 words human valence and dominance correlate at 0.82.
+- **PC2** runs terrified / anxious / afraid / calm / serene / awed ↔ disgusted / embarrassed / envious / jealous / contemptuous / amused, and matches none of the human scales (all |ρ| < 0.15). Reading of the extremes (speculative): emotions about other people versus emotions about one's situation, resembling the agency appraisal in Smith & Ellsworth (1985).
+- **PC3** runs curious / excited / surprised / awed ↔ bored / exhausted / lonely / hopeless: arousal mixed with novelty, which is why D2 missed.

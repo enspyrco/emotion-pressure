@@ -1,0 +1,4 @@
+Fetching 10 files:   0%|          | 0/10 [00:00<?, ?it/s]Fetching 10 files: 100%|██████████| 10/10 [00:00<00:00, 4282.96it/s]
+max logit change: run-to-run 0.0, from recording 0.0
+saved (1000, 40, 2048) to runs/study2/acts.npz
+EXIT=0

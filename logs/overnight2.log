@@ -3,3 +3,6 @@
 2026-10-29T21:55:46+11:00 arm S dropped or survey failed; phase 1 not run
 2026-10-29T21:56:26+11:00 assent survey start
 2026-10-29T22:13:36+11:00 stories.py start
+2026-10-29T22:33:40+11:00 extract.py start
+2026-10-29T22:40:33+11:00 analyze.py start
+2026-10-29T22:40:36+11:00 done

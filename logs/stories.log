@@ -1,0 +1,6 @@
+Fetching 10 files:   0%|          | 0/10 [00:00<?, ?it/s]Fetching 10 files: 100%|██████████| 10/10 [00:00<00:00, 3833.92it/s]
+{'round': 0, 'generated': 1000, 'rejected': 14}
+{'round': 1, 'generated': 14, 'rejected': 1}
+{'round': 2, 'generated': 1, 'rejected': 0}
+kept 1000 of 1000 | meta flags 0 | shortfall {}
+EXIT=0
