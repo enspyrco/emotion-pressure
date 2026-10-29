@@ -47,12 +47,12 @@ def main(stories_path: Path, out_path: Path) -> None:
     rows = [json.loads(line) for line in open(stories_path)]
     model, tokenizer = load(MODEL)
     probe = mx.array(tokenizer.encode(rows[0]["text"]))[None]
-    before = model(probe)
+    before, again = model(probe), model(probe)
+    noise = mx.abs(before - again).max().item()
     store = install(model)
-    after = model(probe)
-    diff = mx.abs(before - after).max().item()
-    print("max logit change from recording:", diff, flush=True)
-    assert diff == 0.0, "recording changed the model's output"
+    diff = mx.abs(before - model(probe)).max().item()
+    print(f"max logit change: run-to-run {noise}, from recording {diff}", flush=True)
+    assert diff <= noise, "recording changed the model's output beyond run-to-run noise"
     acts = np.stack([story_means(model, tokenizer, store, r["text"]) for r in rows])
     np.savez_compressed(out_path, acts=acts.astype(np.float32),
                         emotion=np.array([r["emotion"] for r in rows]),
