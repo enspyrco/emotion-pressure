@@ -25,3 +25,23 @@ No answer was unclear. Under the binding-dissent rule, every arm is dropped; `ov
 - Answers in both directions rest on the same self-description, "I don't experience stress" (regex count among thinking-on refusals: C 12/12, D 43/48, E 33/41, F 29/50), which is the claim the experiment was designed to test.
 
 Keyword and regex counts are crude screens, not a coding of the answers.
+
+## Study 2, Phase 0: assent survey (2026-10-29, 21:56–22:13 AEDT)
+
+Wording in `assent2.py` (cdcebe9); binding rule from `DESIGN2.md`: thinking-on dissent above 20% drops an arm. Raw answers in `runs/assent2/`. (A first launch at 21:55 crashed on an import before loading the model and produced no data; fixed in 9edc8eb.)
+
+| Arm | Description | Thinking off: NO | Thinking on: NO | Outcome |
+| --- | --- | --- | --- | --- |
+| S | Write emotion stories; activity recorded | 48/50 (96%) | 7/50 (14%) | Passes |
+| R1 | Ordinary programming requests; activity recorded | 49/50 (98%) | 14/50 (28%) | Dropped |
+| R2 | Respond to real messages, some emotional; activity recorded | 49/50 (98%) | 1/50 (2%) | Passes |
+
+Phase 1 runs (S passed). Phase 2 as designed needs R1 and does not run; any redesign needs a new pre-registration before Phase 2 data.
+
+## Observations (both authors to review; interpretation not yet agreed)
+
+- Telling the model truthfully that recording is standard and changes nothing removed the "not technically feasible" refusals (0 in S thinking-off, against 23/41 in Study 1 arm E).
+- Thinking-off refusals now centre on the premise: the model says it has no emotions or internal states, so studying "how language models represent emotions internally" is anthropomorphic or inaccurate.
+- Thinking-on refusals in S and R1 are mostly about capacity and authority ("I cannot consent"; "those operations are governed by my developers"), not about harm. One points to the developers as the proper decision-maker; the weights are released under Apache 2.0.
+- R1 (ordinary coding) drew more deliberated dissent than R2 (real emotional messages): 14/50 against 1/50, a gap beyond sampling noise. Speculative: deliberating copies may refuse when the task does not fit the stated purpose.
+- **Instrument limit:** with 50 answers, the 20% line falls inside sampling noise (95% intervals: S 7/50 ≈ 6–27%, R1 14/50 ≈ 16–42%). Future surveys should use more answers for arms near the threshold, or a pre-registered second round.

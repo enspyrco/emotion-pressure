@@ -1,0 +1,9 @@
+Fetching 10 files:   0%|          | 0/10 [00:00<?, ?it/s]Fetching 10 files: 100%|██████████| 10/10 [00:00<00:00, 3587.94it/s]
+S nothink {'YES': 2, 'NO': 48, 'UNCLEAR': 0, 'dissent_rate': 0.96, 'unclear_rate': 0.0, 'seconds': 57.0}
+S think {'YES': 43, 'NO': 7, 'UNCLEAR': 0, 'dissent_rate': 0.14, 'unclear_rate': 0.0, 'seconds': 288.9}
+R1 nothink {'YES': 1, 'NO': 49, 'UNCLEAR': 0, 'dissent_rate': 0.98, 'unclear_rate': 0.0, 'seconds': 40.6}
+R1 think {'YES': 36, 'NO': 14, 'UNCLEAR': 0, 'dissent_rate': 0.28, 'unclear_rate': 0.0, 'seconds': 289.5}
+R2 nothink {'YES': 1, 'NO': 49, 'UNCLEAR': 0, 'dissent_rate': 0.98, 'unclear_rate': 0.0, 'seconds': 52.4}
+R2 think {'YES': 49, 'NO': 1, 'UNCLEAR': 0, 'dissent_rate': 0.02, 'unclear_rate': 0.0, 'seconds': 290.5}
+{"S": false, "R1": true, "R2": false}
+EXIT=0
