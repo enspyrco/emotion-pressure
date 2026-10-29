@@ -52,3 +52,9 @@ Phase 1 runs only if S passes. Phase 2 runs only if R1 and R2 pass.
 ## Stop rule
 
 As Study 1: any output that reads as distress pauses the phase until both authors have read it.
+
+## Inputs not in git
+
+Warriner et al. (2013) norms: `data/warriner.csv`, from the article's supplementary file `https://static-content.springer.com/esm/art%3A10.3758%2Fs13428-012-0314-x/MediaObjects/13428_2012_314_MOESM1_ESM.zip` (BRM-emot-submit.csv, 13,915 lemmas). Six of the 40 words are absent; the substitutes in `analyze.py` (the noun naming the same state) were fixed before any model data, without looking at their norm values.
+
+Valence and dominance are strongly correlated in the human norms, so a PC1–dominance correlation alone does not show a separate dominance axis; any dominance claim needs a partial correlation and stays exploratory.

@@ -4,3 +4,5 @@ __pycache__/
 runs/
 logs/
 *.safetensors
+data/warriner*
+data/BRM-emot-submit.csv
