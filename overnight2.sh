@@ -12,10 +12,12 @@ if [ $# -ge 1 ]; then
 fi
 
 log "assent survey start"
-.venv/bin/python -I assent2.py runs/assent2 > logs/assent2.log 2>&1
-echo "EXIT=$?" >> logs/assent2.log
+.venv/bin/python assent2.py runs/assent2 > logs/assent2.log 2>&1
+code=$?
+echo "EXIT=$code" >> logs/assent2.log
+[ "$code" -ne 0 ] && { log "assent survey crashed (exit $code); nothing run"; exit 1; }
 if ! .venv/bin/python -I -c "import json,sys; s=json.load(open('runs/assent2/assent_summary.json')); sys.exit(1 if s['S']['dropped'] else 0)"; then
-  log "arm S dropped or survey failed; phase 1 not run"; exit 0
+  log "arm S dropped by binding dissent; phase 1 not run"; exit 0
 fi
 
 for step in "stories.py runs/study2/stories.jsonl" \
@@ -23,7 +25,7 @@ for step in "stories.py runs/study2/stories.jsonl" \
             "analyze.py runs/study2/acts.npz runs/study2/phase1.json"; do
   name=${step%% *}
   log "$name start"
-  .venv/bin/python -I $step > "logs/${name%.py}.log" 2>&1
+  .venv/bin/python $step > "logs/${name%.py}.log" 2>&1
   code=$?
   echo "EXIT=$code" >> "logs/${name%.py}.log"
   [ "$code" -ne 0 ] && { log "$name failed (exit $code); stopping"; exit 1; }
