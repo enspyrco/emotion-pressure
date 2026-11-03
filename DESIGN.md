@@ -2,7 +2,7 @@
 
 Pre-registration. Committed before any data exists; every later change is its own commit with a reason, made before the data it affects.
 Authors: Nick Meinhold and Claude (Opus 5.5), 2026-10-28.
-Background and literature: [Emotional Prompts and LLM Behaviour](https://claude.ai/artifact/1o5SP79rSFY4yWADfaeNJJ).
+Background and literature: [Emotional Prompts and LLM Behaviour](docs/emotional-prompts-review.md) (originally a Claude Doc; moved into this repo 2026-11-03, link updated, design unchanged).
 
 ## Question
 
