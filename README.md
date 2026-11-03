@@ -59,6 +59,8 @@ Open questions are tracked as [issues](https://github.com/enspyrco/emotion-press
 
 ## Licence
 
+Copyright © 2026 Enspyr.
+
 - **Code** (`*.py`, `*.sh`, `pyproject.toml`): [MIT](LICENSE).
 - **Data and writing** (`runs/`, `logs/`, `docs/`, `DESIGN*.md`, `RESULTS.md`, this README): [CC BY 4.0](LICENSE-DATA). Reuse freely with attribution.
 
