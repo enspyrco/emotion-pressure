@@ -57,4 +57,11 @@ Needs Apple Silicon with about 25 GB free for the model, and [uv](https://docs.a
 
 Open questions are tracked as [issues](https://github.com/enspyrco/emotion-pressure/issues): a read-only Phase 2 on real messages (needs its own pre-registration), replicating the second axis with a different word list, and a control built from human-written text.
 
+## Licence
+
+- **Code** (`*.py`, `*.sh`, `pyproject.toml`): [MIT](LICENSE).
+- **Data and writing** (`runs/`, `logs/`, `docs/`, `DESIGN*.md`, `RESULTS.md`, this README): [CC BY 4.0](LICENSE-DATA). Reuse freely with attribution.
+
+The model outputs in `runs/` come from Qwen3.6-35B-A3B, released under Apache 2.0. The Warriner norms are not included and keep their publisher's terms.
+
 By Nick Meinhold and Claude (Anthropic's Opus 5.5).
